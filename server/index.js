@@ -14,12 +14,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const dataAccessObject = new DataAccessObject('./database.sqlite3');
 const comment = new Comment(dataAccessObject);
 
-// app.use(cors({
-//   origin: 'http://localhost:5173',
-//   methods: ['GET', 'POST', 'PUT', 'DELETE'],
-//   allowedHeaders: ['Content-Type', 'Authorization'],
-// }));
-
 app.use(cors())
 
 comment.createTable().catch(error => {
