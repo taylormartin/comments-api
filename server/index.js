@@ -22,9 +22,11 @@ comment.createTable().catch(error => {
 
 app.post('/createComment', function(request, response) {
   const { body } = request;
-  comment.createComment(body).then(result => {
-    response.send(result);
-  });
+  setTimeout(() => {
+    comment.createComment(body).then(result => {
+      response.send(result);
+    });
+  }, 1500);
 });
 
 app.get('/getComment', function(request, response) {
@@ -36,9 +38,12 @@ app.get('/getComment', function(request, response) {
 });
 
 app.get('/getComments', function(request, response) {
-  comment.getComments().then(result => {
-    response.send(result);
-  });
+  setTimeout(() => {
+    comment.getComments().then(result => {
+      response.send(result);
+      // response.status(500).send({ error: error.message });
+    });
+  }, 1500);
 });
 
 app.delete('/deleteComments', function(request, response) {
